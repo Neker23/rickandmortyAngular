@@ -1,0 +1,20 @@
+<button (click)="showRickAndMorty = true">Rick and Morty</button>
+<button (click)="showRickAndMorty = false">Users</button>
+
+<ng-container *ngIf="showRickAndMorty">
+  <app-nav (search)="onSearch($event)"></app-nav>
+
+  <h1>{{ character.name }}</h1>
+  <h2>{{ character.status }}</h2>
+  <h3>{{ character.species }}</h3>
+  <img [src]="character.image" alt="" />
+</ng-container>
+
+<ng-container *ngIf="!showRickAndMorty">
+    <br>
+    <br>
+    Users
+
+    <app-user></app-user>
+</ng-container>
+

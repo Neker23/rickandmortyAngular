@@ -1,0 +1,9 @@
+.user {
+  border: solid 1px rgb(214, 214, 214);
+  margin-bottom: 16px;
+  padding: 4px;
+  &--details {
+    background-color: rgb(195, 231, 255);
+    border-color: rgb(125, 201, 252);
+  }
+}

@@ -1,0 +1,41 @@
+<ng-container *ngIf="!userDetails">
+  <form [formGroup]="form">
+    <input placeholder="Name" formControlName="name" />
+    <input type="number" placeholder="Age" formControlName="age" />
+    <input placeholder="Email" formControlName="email" />
+    <input placeholder="Country" formControlName="country" />
+  </form>
+
+  <button *ngIf="!userToEdit" (click)="onAdd()">Add</button>
+
+  <ng-container *ngIf="userToEdit">
+    <button (click)="userToEdit = null">Cancel</button>
+    <button (click)="onEdit()">Save</button>
+  </ng-container>
+
+  <br />
+  <ng-container *ngIf="loading">Loading...</ng-container>
+  <ng-container *ngIf="!loading">
+    <div *ngFor="let item of users" class="user">
+      <div>ID: {{ item.id }}</div>
+      <div>Name: {{ item.name }}</div>
+      <div>Age: {{ item.age | age }}</div>
+      <div>Email: {{ item.email }}</div>
+      <div>Country: {{ item.country }}</div>
+      <button (click)="onDetails(item.id)">Details</button>
+      <button (click)="onPrepareEdit(item)">Edit</button>
+      <button (click)="onDelete(item.id)">Delete</button>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="userDetails">
+  <div class="user user--details">
+    <div>ID: {{ userDetails.id }}</div>
+    <div>Name: {{ userDetails.name }}</div>
+    <div>Age: {{ userDetails.age }}</div>
+    <div>Email: {{ userDetails.email }}</div>
+    <div>Country: {{ userDetails.country }}</div>
+  </div>
+  <button (click)="userDetails = null">Close</button>
+</ng-container>
